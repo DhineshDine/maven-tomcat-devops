@@ -18,4 +18,4 @@ COPY --from=builder /app/target/Maven-Web-App .
 
 EXPOSE 9090
 
-CMD ["java", "-jar", "Maven-Web-App.war"]
+CMD ["java", "-jar", "Maven-Web-App"]
