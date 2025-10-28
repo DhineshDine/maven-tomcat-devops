@@ -10,12 +10,11 @@ COPY . .
 
 RUN mvn clean package
 
-FROM openjdk:11-jdk-slim
+FROM tomcat:latest
+WORKDIR /usr/local/tomcat/webapps
 
-WORKDIR /app
-
-COPY --from=builder /app/target/Maven-Web-App .
+COPY --from=builder /app/target/Maven-Web-App.war .
 
 EXPOSE 9090
 
-CMD ["java", "-jar", "Maven-Web-App"]
+CMD ["catalina.sh", "run"]
